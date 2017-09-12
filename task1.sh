@@ -117,18 +117,16 @@ echo "Coming soon"
 
 if [[ -r /etc/os-release ]]; then
 	. /etc/os-release
-	OS_VERSION=$ID
-	echo "Your distro is $OS_VERSION"
+	echo "Your distro is $ID"
 	ubuntu &> task1_log.txt
 elif [[ -r /etc/redhat-release ]]; then
 	. /etc/redhat-release
-	OS_VERSION=$ID
-	echo "Your distro is $OS_VERSION"
+	echo "Your distro is $ID"
 	centos &> task1_log.txt
 elif [[ -r /etc/debian-release ]]; then
 	. /etc/debian-release
-	OS_VERSION=$ID
-	echo "Your distro is $OS_VERSION"
+	
+	echo "Your distro is $ID"
 	debian &> task1_log.txt
 else
 	echo "Other distro (buid from source)"
