@@ -4,7 +4,6 @@ function systemd {
   
     if [ $(systemctl is-active httpd) != "active" ]
         then
-            echo "Starting httpd"
             systemctl start httpd		
     fi
     
@@ -15,7 +14,6 @@ function systemv {
     check=$(service --status-all | grep -o apache2)
     if [ -z "$check" ]
     then
-	echo "Starting httpd"
         service apache2 start
 	
     fi
@@ -24,12 +22,11 @@ function systemv {
 function systemd1 {
 	if [ $(systemctl is-active apache2) != "active" ]
         then
-	    echo "Starting httpd"
             systemctl start apache2    
         fi
     }
 
-
+echo "Starting httpd"
 
 if [[ -r /etc/os-release ]]; then
 	. /etc/os-release
