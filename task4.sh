@@ -5,8 +5,7 @@ function systemd {
     if [ $(systemctl is-active httpd) != "active" ]
         then
             echo "Starting httpd"
-            systemctl start httpd
-		
+            systemctl start httpd		
     fi
     
 }
@@ -26,8 +25,7 @@ function systemd1 {
 	if [ $(systemctl is-active apache2) != "active" ]
         then
 	    echo "Starting httpd"
-            systemctl start apache2
-	    
+            systemctl start apache2    
         fi
     }
 
@@ -47,6 +45,6 @@ elif [[ -r /etc/debian-release ]]; then
 	echo "Your distro is $ID"
 	systemd1
 else
-	echo ERROR: Unknown distro
+	echo "ERROR: Unknown distro"
 	exit 1
 fi
