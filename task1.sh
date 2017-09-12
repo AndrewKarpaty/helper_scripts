@@ -115,29 +115,24 @@ function scratch {
 echo "Coming soon"
 }
 
+if [[ -r /etc/os-release ]]; then
+	. /etc/os-release
+	OS_VERSION=$ID
+	echo "Your distro is $OS_VERSION"
+	ubuntu &> task1_log.txt
+elif [[ -r /etc/redhat-release ]]; then
+	. /etc/redhat-release
+	OS_VERSION=$ID
+	echo "Your distro is $OS_VERSION"
+	centos &> task1_log.txt
+elif [[ -r /etc/debian-release ]]; then
+	. /etc/debian-release
+	OS_VERSION=$ID
+	echo "Your distro is $OS_VERSION"
+	debian &> task1_log.txt
+else
+	echo "Other distro (buid from source)"
+	scratch &> task1_log.txt
+fi
 
-echo "Choose distro:"
-echo "1. CentOS 7"
-echo "2. Debian 8"
-echo "3. Ubuntu 16"
-echo "4. Other (build from source)"
-
-read -r -p "Make your choice [1/2/3/4] " distro
-case $distro in
-    1)
-        centos &> task1_log.txt
-        ;;
-    2)
-        debian &> task1_log.txt
-        ;;
-    3)
-        ubuntu &> task1_log.txt
-        ;;
-    4)
-        scratch &> task1_log.txt
-        ;;
-    *)
-        echo "You need to make choice"
-        ;;
-esac
 
