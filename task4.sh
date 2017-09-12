@@ -20,7 +20,7 @@ function systemd {
 }
 
 function systemv {
-    check=$(serivce --status-all | grep -o apache2)
+    check=$(service --status-all | grep -o apache2)
     if [ -z "$check" ]
     then
         service apache2 start
