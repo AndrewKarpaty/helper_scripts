@@ -26,7 +26,7 @@ function systemd1 {
         fi
     }
 
-echo "Starting httpd"
+echo "Starting httd for your distro"
 
 if [[ -r /etc/os-release ]]; then
 	. /etc/os-release
