@@ -9,7 +9,6 @@ function systemd {
     
 }
 
-
 function systemv {
     check=$(service --status-all | grep -o apache2)
     if [ -z "$check" ]
@@ -26,16 +25,13 @@ function systemd1 {
         fi
     }
 
-
+echo "Starting httpd"
 
 if [[ -r /etc/os-release ]]; then
-	. /etc/os-release
 	systemd
 elif [[ -r /etc/redhat-release ]]; then
-	. /etc/redhat-release
 	systemv
 elif [[ -r /etc/debian-release ]]; then
-	. /etc/debian-release
 	systemd1
 else
 	echo "ERROR: Unknown distro"
