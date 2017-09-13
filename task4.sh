@@ -26,20 +26,21 @@ function systemd1 {
         fi
     }
 
-echo "Starting httpd for your distro"
+if [[ -r /etc/*-release ]];
+	. /etc/*-release
+then
+	echo "Starting httpd for your distro. Your distro is $ID"
+fi
+
 
 if [[ -r /etc/os-release ]]; then
 	. /etc/os-release
-	echo "Your distro is $ID"
 	systemd
 elif [[ -r /etc/redhat-release ]]; then
 	. /etc/redhat-release
-	
-	echo "Your distro is $ID"
 	systemv
 elif [[ -r /etc/debian-release ]]; then
 	. /etc/debian-release
-	echo "Your distro is $ID"
 	systemd1
 else
 	echo "ERROR: Unknown distro"
