@@ -26,11 +26,6 @@ function systemd1 {
         fi
     }
 
-if [[ -r /etc/*-release ]];
-	. /etc/*-release
-then
-	echo "Starting httpd for your distro. Your distro is $ID"
-fi
 
 
 if [[ -r /etc/os-release ]]; then
